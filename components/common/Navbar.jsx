@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from '../../context/UserContext';
 import Link from 'next/link';
 
 const Navbar = () => {
+  const { username } = useContext(UserContext);
+
   return (
     <nav className='container mx-auto'>
       <ul className='flex relative justify-between items-center py-4'>
@@ -18,7 +21,13 @@ const Navbar = () => {
           </div>
         </li>
         <li>
-          <Link href='/user'>User</Link>
+          <Link href='/user'>
+            <img
+              src='img/avatar.webp'
+              alt=''
+              className='w-8 h-8 rounded-full'
+            />
+          </Link>
         </li>
       </ul>
     </nav>

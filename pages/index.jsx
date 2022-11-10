@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import UserContext from '../context/UserContext';
 import Hero from '../components/home/Hero';
-import Searchbar from '../components/home/Searchbar';
 import ResultsDisplay from '../components/home/ResultsDisplay';
 
 export default function Home() {
