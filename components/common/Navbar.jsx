@@ -12,18 +12,13 @@ const Navbar = () => {
         </li>
         <li className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
           <div className='flex gap-12 font-inter text-lg text-neutral-700'>
-            <a href='#'>Home</a>
-            <a href='#'>Books</a>
-            <a href='#'>Search</a>
+            <Link href='/'>Home</Link>
+            <Link href='/'>Books</Link>
+            <Link href='/'>Search</Link>
           </div>
         </li>
         <li>
-          <input
-            type='text'
-            autoComplete='false'
-            placeholder='Search'
-            className='pl-2 py-1 rounded-lg font-inter outline-none focus:ring-2 ring-offset-2'
-          />
+          <Link href='/user'>User</Link>
         </li>
       </ul>
     </nav>

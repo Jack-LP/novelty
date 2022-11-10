@@ -8,9 +8,13 @@ const ResultsDisplay = ({ bookData }) => {
         <ResultsDisplayItem
           key={item.id}
           bookId={item.id}
-          thumbnail={item.volumeInfo.imageLinks.thumbnail}
-          title={item.volumeInfo.title}
-          author={item.volumeInfo.authors[0]}
+          thumbnail={
+            !item.volumeInfo.imageLinks
+              ? null
+              : item.volumeInfo.imageLinks.thumbnail
+          }
+          title={!item.volumeInfo.title ? null : item.volumeInfo.title}
+          author={!item.volumeInfo.authors ? null : item.volumeInfo.authors[0]}
         />
       ))}
     </div>

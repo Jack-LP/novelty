@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Searchbar from './Searchbar';
+import { heroBookTitles } from '../../data/heroBookTitles';
 
 const Hero = ({ search, setSearch, setBookData }) => {
   return (
