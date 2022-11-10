@@ -7,6 +7,7 @@ const ResultsDisplay = ({ bookData }) => {
       {bookData.map((item) => (
         <ResultsDisplayItem
           key={item.id}
+          bookId={item.id}
           thumbnail={item.volumeInfo.imageLinks.thumbnail}
           title={item.volumeInfo.title}
           author={item.volumeInfo.authors[0]}
