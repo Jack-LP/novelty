@@ -3,7 +3,7 @@ import ResultsDisplayItem from './ResultsDisplayItem';
 
 const ResultsDisplay = ({ bookData }) => {
   return !bookData ? null : (
-    <div className='grid grid-cols-6 grid-rows-2 gap-4 bg-white p-6 rounded-lg'>
+    <div className='grid grid-cols-5 grid-rows-2 gap-4'>
       {bookData.map((item) => (
         <ResultsDisplayItem
           key={item.id}

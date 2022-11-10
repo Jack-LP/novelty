@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Heading from '../components/home/Heading';
+import Hero from '../components/home/Hero';
 import Searchbar from '../components/home/Searchbar';
 import ResultsDisplay from '../components/home/ResultsDisplay';
 
@@ -9,12 +9,7 @@ export default function Home() {
 
   return (
     <div className='container mx-auto flex flex-col py-20 items-center gap-20'>
-      <Heading />
-      <Searchbar
-        search={search}
-        setSearch={setSearch}
-        setBookData={setBookData}
-      />
+      <Hero search={search} setSearch={setSearch} setBookData={setBookData} />
       <ResultsDisplay bookData={bookData} />
     </div>
   );

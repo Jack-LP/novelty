@@ -2,11 +2,13 @@ import React from 'react';
 
 const ResultsDisplayItem = ({ thumbnail, title, author }) => {
   return (
-    <div className='flex flex-col gap-2 max-w-[200px] bg-neutral-700 text-white'>
+    <div className='flex flex-col text-white'>
       <img className='h-[300px] object-cover' src={thumbnail} alt={title} />
-      <div className='flex flex-col gap-1 px-2'>
-        <span className='font-semibold'>{title}</span>
-        <span className='text-sm'>{author}</span>
+      <div className='flex flex-col'>
+        <span className='font-semibold font-lora text-neutral-700 text-lg'>
+          {title}
+        </span>
+        <span className='font-inter text-neutral-700/50'>{author}</span>
       </div>
     </div>
   );

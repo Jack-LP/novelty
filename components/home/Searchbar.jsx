@@ -29,7 +29,7 @@ const Searchbar = ({ search, setSearch, setBookData }) => {
         onChange={(e) => setSearch(e.target.value)}
         type='text'
         placeholder='Search a book for its reading time...'
-        className='p-2 rounded-lg font-lora w-[750px] text-lg'
+        className='p-2 z-10 rounded-lg font-inter w-[750px] text-lg outline-none focus:ring-2 ring-offset-2'
       />
     </>
   );

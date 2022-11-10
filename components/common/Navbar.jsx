@@ -3,18 +3,25 @@ import React from 'react';
 const Navbar = () => {
   return (
     <nav className='container mx-auto'>
-      <ul className='flex justify-between items-center pt-2 pb-4 border-b-2 border-black/20'>
+      <ul className='flex relative justify-between items-center py-4'>
         <li>
-          <a href='#' className='font-bold  text-3xl'>
+          <a href='#' className='font-bold font-playfair text-3xl'>
             novelty
           </a>
+        </li>
+        <li className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+          <div className='flex gap-12 font-inter text-lg text-neutral-700'>
+            <a href='#'>Home</a>
+            <a href='#'>Books</a>
+            <a href='#'>Search</a>
+          </div>
         </li>
         <li>
           <input
             type='text'
             autoComplete='false'
             placeholder='Search'
-            className='p-1'
+            className='pl-2 py-1 rounded-lg font-inter outline-none focus:ring-2 ring-offset-2'
           />
         </li>
       </ul>
