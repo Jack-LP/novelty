@@ -8,10 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        paper: '#dad2ce',
+        paper: '#f9f4e8',
       },
       fontFamily: {
         lora: ['Lora', 'serif'],
+        playfair: ['Playfair Display', 'serif'],
       },
     },
   },

@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 
 const API_KEY = 'AIzaSyADAV_RuIVe-nZHJFf2HxmKdDHtvE_zAmM';
 
-const Searchbar = () => {
-  const [search, setSearch] = useState('');
-  const [bookData, setBookData] = useState(null);
-
+const Searchbar = ({ search, setSearch, setBookData }) => {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
+      setBookData(null);
       fetchSearchData();
     }
   };
@@ -19,7 +17,7 @@ const Searchbar = () => {
         `https://www.googleapis.com/books/v1/volumes?q=${search}&key=${API_KEY}`
       )
       .then((res) => {
-        const data = res.data;
+        const data = res.data.items;
         setBookData(data);
       });
   };
