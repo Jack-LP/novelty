@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         paper: '#DAD2CE',
+        charcoal: '#2f2f2f',
       },
       fontFamily: {
         lora: ['Lora', 'serif'],

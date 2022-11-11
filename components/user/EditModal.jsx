@@ -1,8 +1,12 @@
-import React, { useEffect, useContext, Children } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
+import { useRouter } from 'next/router';
 import UserContext from '../../context/UserContext';
 
 const EditModal = ({ showModal, setShowModal }) => {
+  const [usernameEdit, setUsernameEdit] = useState('');
   const { username, setUsername, avatar, setAvatar } = useContext(UserContext);
+
+  const router = useRouter();
 
   useEffect(() => {
     const keyDownHandler = (e) => {
@@ -19,7 +23,17 @@ const EditModal = ({ showModal, setShowModal }) => {
     };
   }, [setShowModal]);
 
-  console.log(avatar);
+  const handleUsernameChange = () => {
+    if (usernameEdit.length > 0 && usernameEdit.length < 15) {
+      setUsername(usernameEdit);
+      setUsernameEdit('');
+    }
+  };
+
+  const resetDefaults = () => {
+    localStorage.clear();
+    router.reload(window.location.pathname);
+  };
 
   return (
     <div
@@ -38,11 +52,15 @@ const EditModal = ({ showModal, setShowModal }) => {
           type='file'
           onChange={(e) => setAvatar(URL.createObjectURL(e.target.files[0]))}
         />
+        <span>{username}</span>
         <input
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setUsernameEdit(e.target.value)}
           type='text'
           placeholder={'Enter your username'}
+          value={usernameEdit}
         />
+        <button onClick={handleUsernameChange}>Submit</button>
+        <button onClick={resetDefaults}>Reset to default</button>
       </div>
     </div>
   );

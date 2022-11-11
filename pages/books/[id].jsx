@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import UserContext from '../../context/UserContext';
 import axios from 'axios';
-import {
-  convertToHours,
-  toHoursAndMinutes,
-} from '../../utilities/convertToHours';
+import { convertToHours } from '../../utilities/convertToHours';
 import { useRouter } from 'next/router';
 
 const API_KEY = 'AIzaSyADAV_RuIVe-nZHJFf2HxmKdDHtvE_zAmM';
 
 const BookPage = () => {
   const [bookData, setBookData] = useState(null);
+
+  const { readingSpeed } = useContext(UserContext);
 
   const router = useRouter();
   const { id } = router.query;
@@ -36,8 +36,8 @@ const BookPage = () => {
       <span>Pages: {bookData.printedPageCount}</span>
       <span>Word Count: {bookData.printedPageCount * 230}</span>
       <span>
-        Time to read: {convertToHours((bookData.printedPageCount * 230) / 250)}{' '}
-        Hours
+        Time to read:{' '}
+        {convertToHours((bookData.printedPageCount * 230) / readingSpeed)} Hours
       </span>
     </div>
   );
