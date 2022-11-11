@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import UserContext from '../context/UserContext';
 import { speedTestPassage } from '../data/speedTestPassage';
 
 const SpeedTest = () => {
   const [timer, setTimer] = useState(0);
   const [isTiming, setIsTiming] = useState(false);
-  const [speed, setSpeed] = useState(0);
+
+  const { readingSpeed, setReadingSpeed } = useContext(UserContext);
 
   const addToTimer = () => {
     setTimer((prev) => Math.round((prev + 0.1) * 100) / 100);
@@ -12,7 +14,7 @@ const SpeedTest = () => {
 
   const stopTimer = () => {
     setIsTiming(false);
-    setSpeed(Math.round((204 / timer) * 60));
+    setReadingSpeed(Math.round((204 / timer) * 60));
   };
 
   useEffect(() => {
@@ -28,7 +30,7 @@ const SpeedTest = () => {
     <div className='container mx-auto flex flex-col gap-4'>
       <h1>Reading speed test</h1>
       <span className='font-mono'>{timer} seconds</span>
-      <span className='font-mono'>{speed} words per minute</span>
+      <span className='font-mono'>{readingSpeed} words per minute</span>
       <h2>Read this passage</h2>
       <button
         className={`${isTiming ? 'hidden' : 'block'} bg-green-400`}

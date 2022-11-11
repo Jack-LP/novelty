@@ -3,7 +3,7 @@ import UserContext from '../../context/UserContext';
 import Link from 'next/link';
 
 const Navbar = () => {
-  const { username } = useContext(UserContext);
+  const { avatar, username } = useContext(UserContext);
 
   return (
     <nav className='container mx-auto'>
@@ -23,9 +23,9 @@ const Navbar = () => {
         <li>
           <Link href='/user'>
             <img
-              src='img/avatar.webp'
-              alt=''
-              className='w-8 h-8 rounded-full'
+              src={avatar}
+              alt={username}
+              className='w-8 h-8 rounded-full object-cover'
             />
           </Link>
         </li>

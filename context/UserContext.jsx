@@ -4,9 +4,22 @@ const UserContext = createContext();
 
 export const UserWrapper = ({ children }) => {
   const [username, setUsername] = useState('User');
+  const [avatar, setAvatar] = useState('img/avatar.webp');
+  const [readingSpeed, setReadingSpeed] = useState(0);
 
   return (
-    <UserContext.Provider value={{ username }}>{children}</UserContext.Provider>
+    <UserContext.Provider
+      value={{
+        username,
+        setUsername,
+        avatar,
+        setAvatar,
+        readingSpeed,
+        setReadingSpeed,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
   );
 };
 
