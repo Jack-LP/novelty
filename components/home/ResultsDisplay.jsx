@@ -3,7 +3,7 @@ import ResultsDisplayItem from './ResultsDisplayItem';
 
 const ResultsDisplay = ({ bookData }) => {
   return !bookData ? null : (
-    <div className='grid grid-cols-5 grid-rows-2 gap-4'>
+    <div className='container mx-auto flex justify-between bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg'>
       {bookData.map((item) => (
         <ResultsDisplayItem
           key={item.id}

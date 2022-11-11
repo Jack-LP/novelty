@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const API_KEY = 'AIzaSyADAV_RuIVe-nZHJFf2HxmKdDHtvE_zAmM';
 
-const Searchbar = ({ search, setSearch, setBookData }) => {
+const Searchbar = ({ setBookData }) => {
+  const [search, setSearch] = useState('');
+
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       setBookData(null);
@@ -14,7 +16,7 @@ const Searchbar = ({ search, setSearch, setBookData }) => {
   const fetchSearchData = () => {
     axios
       .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${search}&key=${API_KEY}`
+        `https://www.googleapis.com/books/v1/volumes?q=${search}&maxResults=5&key=${API_KEY}`
       )
       .then((res) => {
         const data = res.data.items;
@@ -28,8 +30,8 @@ const Searchbar = ({ search, setSearch, setBookData }) => {
         onKeyDown={(e) => handleKeyDown(e)}
         onChange={(e) => setSearch(e.target.value)}
         type='text'
-        placeholder='Search a book for its reading time...'
-        className='p-2 z-10 rounded-lg font-inter w-[750px] text-lg outline-none focus:ring-2 ring-offset-2'
+        placeholder='Search'
+        className='bg-charcoal placeholder-white/20 text-neutral-300 pl-4 py-3 w-1/2 rounded-lg font-inter outline-none'
       />
     </>
   );
