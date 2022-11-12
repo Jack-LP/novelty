@@ -2,7 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import UserContext from '../../context/UserContext';
 import Link from 'next/link';
 
-const links = ['Home', 'Speed test', 'Search'];
+const links = [
+  { title: 'Home', href: '/' },
+  { title: 'Speed test', href: '/speedTest' },
+  { title: 'Search', href: '/' },
+];
 
 const Navbar = () => {
   const { avatar } = useContext(UserContext);
@@ -17,12 +21,12 @@ const Navbar = () => {
       <nav className='container mx-auto flex relative justify-between items-center py-4'>
         <ul className='flex gap-12 font-inter text-lg text-neutral-500'>
           {links.map((link) => (
-            <li key={link}>
+            <li key={link.href}>
               <Link
-                href={`/${link}`}
+                href={`/${link.href}`}
                 className='hover:text-white transition duration-200 ease-in-out'
               >
-                {link}
+                {link.title}
               </Link>
             </li>
           ))}
