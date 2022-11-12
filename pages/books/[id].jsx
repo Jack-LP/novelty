@@ -27,12 +27,16 @@ const BookPage = () => {
     <div className='container mx-auto flex flex-col gap-4'>
       <img
         className='w-96'
-        src={bookData.imageLinks.thumbnail}
+        src={
+          !bookData.imageLinks
+            ? '/img/bookCover.svg'
+            : bookData.imageLinks.thumbnail
+        }
         alt={bookData.title}
       />
-      <h1>{bookData.title}</h1>
-      <h2>{bookData.authors}</h2>
-      <p>{bookData.description}</p>
+      <h1>{!bookData.title ? 'Title unknown' : bookData.title}</h1>
+      <h2>{!bookData.authors ? 'Author(s) unknown' : bookData.authors}</h2>
+      <p>{!bookData.description ? 'No Description' : bookData.description}</p>
       <span>Pages: {bookData.printedPageCount}</span>
       <span>Word Count: {bookData.printedPageCount * 230}</span>
       <span>

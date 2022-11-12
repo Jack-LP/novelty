@@ -1,10 +1,13 @@
 import '../styles/globals.css';
 import { UserWrapper } from '../context/UserContext';
+import Layout from '../components/layout/Layout';
 
 function MyApp({ Component, pageProps }) {
   return (
     <UserWrapper>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </UserWrapper>
   );
 }

@@ -10,11 +10,17 @@ const ResultsDisplay = ({ bookData }) => {
           bookId={item.id}
           thumbnail={
             !item.volumeInfo.imageLinks
-              ? null
+              ? '/img/bookCover.svg'
               : item.volumeInfo.imageLinks.thumbnail
           }
-          title={!item.volumeInfo.title ? null : item.volumeInfo.title}
-          author={!item.volumeInfo.authors ? null : item.volumeInfo.authors[0]}
+          title={
+            !item.volumeInfo.title ? 'Title unknown' : item.volumeInfo.title
+          }
+          author={
+            !item.volumeInfo.authors
+              ? 'Author(s) unknown'
+              : item.volumeInfo.authors[0]
+          }
         />
       ))}
     </div>
