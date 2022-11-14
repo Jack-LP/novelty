@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import UserContext from '../../context/UserContext';
+import UserContext from '../../../context/UserContext';
 import Link from 'next/link';
 
 const links = [
@@ -37,7 +37,7 @@ const Navbar = () => {
         >
           novelty
         </Link>
-        <Link href='/user'>
+        <Link className='flex' href='/user'>
           <img
             src={avatarDisplay}
             alt='2'

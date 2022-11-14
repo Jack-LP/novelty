@@ -27,9 +27,9 @@ const BookPage = () => {
   }, [id]);
 
   return !bookData ? null : (
-    <>
+    <div className='py-28'>
       <BackgroundImage image='/img/user-bg.jpg' />
-      <div className='container bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg mx-auto mt-28 flex flex-col gap-4'>
+      <div className='container mx-auto flex flex-col gap-4'>
         <div className='flex gap-10'>
           <img
             className='w-96 h-[450px] object-cover rounded-lg'
@@ -40,7 +40,7 @@ const BookPage = () => {
             }
             alt={bookData.title}
           />
-          <div className='flex flex-col gap-4 w-full'>
+          <div className='flex flex-col gap-4 w-full bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg '>
             <div className='flex flex-col gap-1 font-playfair text-white'>
               <h1 className='text-4xl  font-semibold'>
                 {!bookData.title ? 'Title unknown' : bookData.title}
@@ -57,7 +57,7 @@ const BookPage = () => {
                     ' '
                   )}
             </p>
-            <div className='flex justify-between text-white font-inter font-light'>
+            <div className='flex justify-between h-full items-end text-white font-inter font-light'>
               <span className='flex gap-2 items-center'>
                 <BookHalf size={18} />
                 Pages: {bookData.printedPageCount}
@@ -78,7 +78,7 @@ const BookPage = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
