@@ -4,9 +4,9 @@ import Link from 'next/link';
 const ResultsDisplayItem = ({ bookId, thumbnail, title, author }) => {
   return (
     <Link href={`/books/${bookId}`}>
-      <div className='flex flex-col gap-3 text-white w-[230px] overflow-hidden  whitespace-nowrap text-ellipsis'>
+      <div className='flex flex-col gap-3 text-white w-[80px] overflow-hidden  whitespace-nowrap text-ellipsis'>
         <img
-          className='h-[300px] object-cover rounded-md'
+          className='h-[120px] object-cover rounded-md'
           src={thumbnail}
           alt={title}
         />

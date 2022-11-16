@@ -28,16 +28,16 @@ const Searchbar = ({ setBookData }) => {
   };
 
   return (
-    <div className='bg-charcoal rounded-lg flex items-center w-1/2'>
+    <div className='bg-charcoal rounded-lg flex items-center'>
       <input
         onKeyDown={(e) => handleKeyDown(e)}
         onChange={(e) => setSearch(e.target.value)}
         type='text'
         placeholder='Search'
-        className='bg-charcoal placeholder-white/20 text-neutral-300 pl-4 py-3 w-full rounded-lg font-inter outline-none focus:ring-1 ring-white/50'
+        className='bg-charcoal placeholder-white/20 text-neutral-300 pl-3 md:pl-4 py-2 md:py-3 w-full rounded-lg font-inter outline-none focus:ring-1 ring-white/50'
       />
       <button className='px-3' onClick={fetchSearchData}>
-        <Search color='white' size={24} />
+        <Search color='white' className='text-[20px] md:text-[24px]' />
       </button>
     </div>
   );

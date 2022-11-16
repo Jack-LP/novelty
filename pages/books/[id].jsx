@@ -27,7 +27,7 @@ const BookPage = () => {
   }, [id]);
 
   return !bookData ? null : (
-    <div className='py-28'>
+    <div className='pt-28'>
       <BackgroundImage image='/img/user-bg.jpg' />
       <div className='container mx-auto flex flex-col gap-4'>
         <div className='flex gap-10'>
@@ -40,7 +40,7 @@ const BookPage = () => {
             }
             alt={bookData.title}
           />
-          <div className='flex flex-col gap-4 w-full bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg '>
+          <div className='flex flex-col gap-4 w-full bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg'>
             <div className='flex flex-col gap-1 font-playfair text-white'>
               <h1 className='text-4xl  font-semibold'>
                 {!bookData.title ? 'Title unknown' : bookData.title}

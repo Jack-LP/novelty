@@ -16,16 +16,18 @@ const Hero = ({ setBookData }) => {
   }, []);
 
   return (
-    <div className='flex flex-col gap-14'>
-      <div className='text-6xl text-white font-playfair font-bold'>
-        <h1>How long does it take to read...</h1>
-        <TypewriterComponent
-          options={{
-            strings: heroBookTitles,
-            autoStart: true,
-            loop: true,
-          }}
-        />
+    <div className='flex flex-col items-center md:items-start gap-14'>
+      <div className='flex flex-col gap-4 md:gap-0 items-center md:items-start text-3xl md:text-6xl text-white text-center md:text-start font-playfair font-bold'>
+        <h1 className='md:w-full w-2/3'>How long does it take to read...</h1>
+        <div className='w-full text-2xl md:text-6xl'>
+          <TypewriterComponent
+            options={{
+              strings: heroBookTitles,
+              autoStart: true,
+              loop: true,
+            }}
+          />
+        </div>
       </div>
       <Searchbar setBookData={setBookData} />
     </div>
