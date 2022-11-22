@@ -43,9 +43,9 @@ const Navbar = () => {
           </Link>
           <Link className='hidden lg:block' href='/user'>
             <img
-              src={avatarDisplay}
-              alt='2'
-              className='w-8 h-8 rounded-full object-cover'
+              src={avatarDisplay ? avatarDisplay : '/img/avatar.webp'}
+              alt=''
+              className='w-10 h-10 rounded-full object-cover'
             />
           </Link>
           <div className={`${isOpen ? 'hidden' : null} lg:hidden`}>

@@ -32,12 +32,12 @@ const BookPage = () => {
       <Head>
         <title>novelty | {bookData.title}</title>
       </Head>
-      <div className='pt-28'>
+      <div className='pt-4 xl:pt-28'>
         <BackgroundImage image='/img/user-bg.jpg' />
         <div className='container mx-auto flex flex-col gap-4'>
-          <div className='flex gap-10'>
+          <div className='flex flex-col xl:flex-row items-center gap-4 xl:gap-10'>
             <img
-              className='w-96 h-[450px] object-cover rounded-lg'
+              className='w-[190px] xl:w-96 h-[340px] xl:h-[450px] object-cover rounded-lg'
               src={
                 !bookData.imageLinks
                   ? '/img/bookCover.svg'
@@ -45,7 +45,7 @@ const BookPage = () => {
               }
               alt={bookData.title}
             />
-            <div className='flex flex-col gap-4 w-full bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg'>
+            <div className='flex flex-col gap-6 w-full bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg'>
               <div className='flex flex-col gap-1 font-playfair text-white'>
                 <h1 className='text-4xl  font-semibold'>
                   {!bookData.title ? 'Title unknown' : bookData.title}
@@ -54,7 +54,7 @@ const BookPage = () => {
                   {!bookData.authors ? 'Author(s) unknown' : bookData.authors}
                 </h2>
               </div>
-              <p className='text-white font-lora leading-7'>
+              <p className='text-white font-lora leading-7 order-2'>
                 {!bookData.description
                   ? 'No Description'
                   : bookData.description.replace(
@@ -62,22 +62,29 @@ const BookPage = () => {
                       ' '
                     )}
               </p>
-              <div className='flex justify-between h-full items-end text-white font-inter font-light'>
-                <span className='flex gap-2 items-center'>
-                  <BookHalf size={18} />
-                  Pages: {bookData.printedPageCount}
+              <div className='flex justify-between h-full items-end text-white font-inter font-light order-1 xl:order-2'>
+                <span className='flex flex-col gap-2 items-center'>
+                  <BookHalf size={20} />
+                  <div className='flex gap-1'>
+                    <span className='hidden xl:inline'>Pages:</span>
+                    {bookData.printedPageCount}
+                  </div>
                 </span>
-                <span className='flex gap-2 items-center'>
-                  <Fonts size={18} />
-                  Words: {numberWithCommas(bookData.printedPageCount * 230)}
+                <span className='flex flex-col gap-2 items-center'>
+                  <Fonts size={20} />
+                  <div className='flex gap-1'>
+                    <span className='hidden xl:inline'>Words:</span>
+                    {numberWithCommas(bookData.printedPageCount * 230)}
+                  </div>
                 </span>
-                <span className='flex gap-2 items-center'>
-                  <HourglassSplit size={18} />
-                  Time:{' '}
-                  {convertToHours(
-                    (bookData.printedPageCount * 230) / readingSpeed
-                  )}{' '}
-                  Hours
+                <span className='flex flex-col gap-2 items-center'>
+                  <HourglassSplit size={20} />
+                  <div className='flex gap-1'>
+                    <span className='hidden xl:inline'>Time:</span>
+                    {`${convertToHours(
+                      (bookData.printedPageCount * 230) / readingSpeed
+                    )} Hrs`}
+                  </div>
                 </span>
               </div>
             </div>

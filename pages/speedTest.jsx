@@ -10,7 +10,6 @@ const SpeedTest = () => {
   const [isTiming, setIsTiming] = useState(false);
   const [hasTimed, setHasTimed] = useState(false);
   const [showPassage, setShowPassage] = useState(false);
-  const [speedDisplay, setSpeedDisplay] = useState(null);
 
   const { readingSpeed, setReadingSpeed } = useContext(UserContext);
 
@@ -30,10 +29,6 @@ const SpeedTest = () => {
     setReadingSpeed(Math.round((204 / timer) * 60));
     setShowPassage(false);
   };
-
-  useEffect(() => {
-    setSpeedDisplay(readingSpeed);
-  }, [readingSpeed]);
 
   useEffect(() => {
     if (isTiming) {
@@ -63,7 +58,7 @@ const SpeedTest = () => {
               </div>
               <div className='flex gap-2 items-center'>
                 <Fonts size={18} />
-                <span>{speedDisplay} wpm</span>
+                <span>{readingSpeed ? readingSpeed : '0'} wpm</span>
               </div>
             </div>
             <p className='font-lora'>
