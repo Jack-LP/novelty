@@ -4,8 +4,8 @@ import UserContext from '../../context/UserContext';
 import { X } from 'react-bootstrap-icons';
 
 const EditModal = ({ showModal, setShowModal }) => {
-  const [usernameEdit, setUsernameEdit] = useState('');
   const { username, setUsername, avatar, setAvatar } = useContext(UserContext);
+  const [usernameEdit, setUsernameEdit] = useState('');
 
   const router = useRouter();
 
@@ -29,11 +29,29 @@ const EditModal = ({ showModal, setShowModal }) => {
       setUsername(usernameEdit);
       setUsernameEdit('');
     }
+    setShowModal(false);
   };
 
   const resetDefaults = () => {
     localStorage.clear();
     router.reload(window.location.pathname);
+  };
+
+  const getBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const imageUpload = (e) => {
+    const file = e.target.files[0];
+    getBase64(file).then((base64) => {
+      localStorage['avatar'] = base64;
+      setAvatar(base64);
+    });
   };
 
   return (
@@ -70,7 +88,8 @@ const EditModal = ({ showModal, setShowModal }) => {
             id='avatarUpload'
             className='hidden'
             type='file'
-            onChange={(e) => setAvatar(URL.createObjectURL(e.target.files[0]))}
+            accept='image/*'
+            onChange={(e) => imageUpload(e)}
           />
         </div>
         <div className='flex flex-col gap-2'>

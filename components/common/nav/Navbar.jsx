@@ -7,7 +7,6 @@ import Link from 'next/link';
 const links = [
   { title: 'Home', href: '/' },
   { title: 'Speed test', href: '/speedTest' },
-  { title: 'Search', href: '/' },
 ];
 
 const Navbar = () => {
@@ -42,7 +41,7 @@ const Navbar = () => {
           >
             novelty
           </Link>
-          <Link className='hidden lg:block' href='user'>
+          <Link className='hidden lg:block' href='/user'>
             <img
               src={avatarDisplay}
               alt='2'

@@ -5,7 +5,6 @@ import NavButton from './NavButton';
 const links = [
   { title: 'Home', href: '/' },
   { title: 'Speed test', href: '/speedTest' },
-  { title: 'Search', href: '/' },
 ];
 
 const NavDrawer = ({ isOpen, setIsOpen, avatar }) => {
@@ -17,7 +16,7 @@ const NavDrawer = ({ isOpen, setIsOpen, avatar }) => {
     >
       <NavButton isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className='flex flex-col items-center gap-10'>
-        <Link href='user' onClick={() => setIsOpen(false)}>
+        <Link href='/user' onClick={() => setIsOpen(false)}>
           <img
             src={avatar}
             alt='2'
