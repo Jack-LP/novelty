@@ -23,10 +23,10 @@ const Navbar = () => {
     <>
       <NavDrawer isOpen={isOpen} setIsOpen={setIsOpen} avatar={avatarDisplay} />
       <div className='w-full bg-charcoal/25 backdrop-blur-lg'>
-        <nav className='container mx-auto flex relative justify-center md:justify-between items-center py-3'>
+        <nav className='container mx-auto flex relative justify-center lg:justify-between items-center py-3'>
           <ul className='flex gap-12 font-inter text-lg text-neutral-500'>
             {links.map((link) => (
-              <li key={link.href} className='hidden md:block'>
+              <li key={link.href} className='hidden lg:block'>
                 <Link
                   href={`/${link.href}`}
                   className='hover:text-white transition duration-200 ease-in-out'
@@ -38,18 +38,18 @@ const Navbar = () => {
           </ul>
           <Link
             href='/'
-            className='font-bold font-playfair text-3xl text-white'
+            className='font-bold font-playfair text-3xl lg:text-4xl text-white lg:absolute lg:top-1/2 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2'
           >
             novelty
           </Link>
-          <Link className='hidden md:flex' href='/user'>
+          <Link className='hidden lg:block' href='/user'>
             <img
               src={avatarDisplay}
               alt='2'
               className='w-8 h-8 rounded-full object-cover'
             />
           </Link>
-          <div className={`${isOpen ? 'hidden' : null}`}>
+          <div className={`${isOpen ? 'hidden' : null} lg:hidden`}>
             <NavButton isOpen={isOpen} setIsOpen={setIsOpen} />
           </div>
         </nav>

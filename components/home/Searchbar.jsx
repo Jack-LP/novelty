@@ -28,7 +28,7 @@ const Searchbar = ({ setBookData }) => {
   };
 
   return (
-    <div className='bg-charcoal rounded-lg flex items-center'>
+    <div className='bg-charcoal rounded-lg flex items-center xl:w-1/3'>
       <input
         onKeyDown={(e) => handleKeyDown(e)}
         onChange={(e) => setSearch(e.target.value)}

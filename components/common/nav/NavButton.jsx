@@ -4,7 +4,7 @@ import { List, X } from 'react-bootstrap-icons';
 const NavButton = ({ isOpen, setIsOpen }) => {
   return (
     <button
-      className='fixed z-20 top-4 right-4 md:hidden'
+      className='fixed z-20 top-4 right-4 lg:hidden'
       onClick={() => setIsOpen((prev) => !prev)}
     >
       {isOpen ? (
