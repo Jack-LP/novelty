@@ -90,6 +90,14 @@ const SpeedTest = () => {
             >
               {speedTestPassage}
             </p>
+            <button
+              className={`${
+                isTiming ? 'block' : 'hidden'
+              } bg-charcoal py-1.5 px-4 font-inter font-light rounded-lg lg:hidden`}
+              onClick={stopTimer}
+            >
+              Stop
+            </button>
           </div>
         </div>
       </div>
