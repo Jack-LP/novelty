@@ -7,18 +7,18 @@ const UserCard = ({ setShowModal }) => {
   const { username, avatar, readingSpeed } = useContext(UserContext);
 
   return (
-    <div className='relative bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg flex items-center gap-6'>
+    <div className='relative bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg flex flex-col md:flex-row items-center gap-6'>
       <img
-        className='w-64 h-64 object-cover rounded-full'
+        className='w-48 h-48 lg:w-64 lg:h-64 object-cover rounded-full'
         src={avatar}
         alt={!username ? null : username}
       />
-      <div className='flex flex-col gap-6 text-white'>
-        <h1 className='text-4xl  font-playfair font-semibold'>
+      <div className='flex flex-col items-center md:items-start gap-6 text-white'>
+        <h1 className='text-4xl font-playfair font-semibold'>
           {!username ? null : username}
         </h1>
-        <div className='flex flex-col gap-2'>
-          <h2 className='font-inter text-xl font-light'>
+        <div className='flex flex-col items-center md:items-start gap-2'>
+          <h2 className='font-inter text-lg font-light'>
             Reading Speed: {!readingSpeed ? null : readingSpeed} wpm
           </h2>
           <Link href='/speedTest'>

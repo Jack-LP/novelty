@@ -44,7 +44,7 @@ const EditModal = ({ showModal, setShowModal }) => {
       onClick={() => setShowModal(false)}
     >
       <div
-        className='container mx-auto relative flex items-start flex-col p-6 gap-10 bg-charcoal/50 text-white rounded-lg font-inter'
+        className='container max-w-[340px] mx-auto relative flex items-center flex-col p-6 gap-10 bg-charcoal/50 text-white rounded-lg font-inter'
         onClick={(e) => e.stopPropagation()}
       >
         <button

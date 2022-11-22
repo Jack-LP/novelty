@@ -13,11 +13,11 @@ const NavDrawer = ({ isOpen, setIsOpen, avatar }) => {
     <div
       className={`${
         isOpen ? 'translate-x-0' : 'translate-x-full'
-      } flex right-0 md:hidden fixed z-30 h-screen w-[65vw] bg-charcoal/50 backdrop-blur-lg justify-center pt-24 duration-500 ease-in-out text-white`}
+      } flex right-0 lg:hidden fixed z-30 h-screen w-[65vw] bg-charcoal/50 backdrop-blur-lg justify-center pt-24 duration-500 ease-in-out text-white`}
     >
       <NavButton isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className='flex flex-col items-center gap-10'>
-        <Link href='/user' onClick={() => setIsOpen(false)}>
+        <Link href='user' onClick={() => setIsOpen(false)}>
           <img
             src={avatar}
             alt='2'
@@ -28,8 +28,8 @@ const NavDrawer = ({ isOpen, setIsOpen, avatar }) => {
           {links.map((link) => (
             <Link
               onClick={() => setIsOpen(false)}
-              key={link.href}
-              href={`/${link.href}`}
+              key={link.title}
+              href={`${link.href}`}
               className='hover:text-white transition duration-200 ease-in-out text-lg'
             >
               {link.title}

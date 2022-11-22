@@ -26,9 +26,9 @@ const Navbar = () => {
         <nav className='container mx-auto flex relative justify-center lg:justify-between items-center py-3'>
           <ul className='flex gap-12 font-inter text-lg text-neutral-500'>
             {links.map((link) => (
-              <li key={link.href} className='hidden lg:block'>
+              <li key={link.title} className='hidden lg:block'>
                 <Link
-                  href={`/${link.href}`}
+                  href={`${link.href}`}
                   className='hover:text-white transition duration-200 ease-in-out'
                 >
                   {link.title}
@@ -42,7 +42,7 @@ const Navbar = () => {
           >
             novelty
           </Link>
-          <Link className='hidden lg:block' href='/user'>
+          <Link className='hidden lg:block' href='user'>
             <img
               src={avatarDisplay}
               alt='2'

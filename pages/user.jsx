@@ -4,7 +4,6 @@ import BackgroundImage from '../components/common/BackgroundImage';
 import UserCard from '../components/user/UserCard';
 import UserContext from '../context/UserContext';
 import EditModal from '../components/user/EditModal';
-import Link from 'next/link';
 
 const User = () => {
   const [showModal, setShowModal] = useState(false);

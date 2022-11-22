@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react';
+import Head from 'next/head';
 import UserContext from '../context/UserContext';
 import BackgroundImage from '../components/common/BackgroundImage';
 import { speedTestPassage } from '../data/speedTestPassage';
 import { HourglassSplit, Fonts } from 'react-bootstrap-icons';
 
 const SpeedTest = () => {
-  const [testDisplay, setTestDisplay] = useState(null);
   const [timer, setTimer] = useState(0);
   const [isTiming, setIsTiming] = useState(false);
   const [hasTimed, setHasTimed] = useState(false);
   const [showPassage, setShowPassage] = useState(false);
+  const [speedDisplay, setSpeedDisplay] = useState(null);
 
   const { readingSpeed, setReadingSpeed } = useContext(UserContext);
 
@@ -27,7 +28,12 @@ const SpeedTest = () => {
   const stopTimer = () => {
     setIsTiming(false);
     setReadingSpeed(Math.round((204 / timer) * 60));
+    setShowPassage(false);
   };
+
+  useEffect(() => {
+    setSpeedDisplay(readingSpeed);
+  }, [readingSpeed]);
 
   useEffect(() => {
     if (isTiming) {
@@ -38,13 +44,16 @@ const SpeedTest = () => {
     }
   }, [isTiming]);
 
-  useEffect(() => {
-    setTestDisplay(
+  return (
+    <>
+      <Head>
+        <title>novelty | Speed Test</title>
+      </Head>
       <div className='pt-28'>
         <BackgroundImage image='img/user-bg.jpg' />
         <div className='container mx-auto flex flex-col gap-4'>
           <div className='flex flex-col items-start gap-4 bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg text-white'>
-            <h1 className='font-playfair text-6xl font-bold'>
+            <h1 className='font-playfair text-2xl md:text-4xl lg:text-6xl font-bold'>
               Reading speed test
             </h1>
             <div className='flex gap-4 font-inter'>
@@ -54,7 +63,7 @@ const SpeedTest = () => {
               </div>
               <div className='flex gap-2 items-center'>
                 <Fonts size={18} />
-                <span>{readingSpeed} wpm</span>
+                <span>{speedDisplay} wpm</span>
               </div>
             </div>
             <p className='font-lora'>
@@ -89,10 +98,8 @@ const SpeedTest = () => {
           </div>
         </div>
       </div>
-    );
-  }, [isTiming, readingSpeed, startTimer, stopTimer, timer, showPassage]);
-
-  return <>{testDisplay}</>;
+    </>
+  );
 };
 
 export default SpeedTest;
