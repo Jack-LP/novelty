@@ -3,7 +3,7 @@ import ResultsDisplayItem from './ResultsDisplayItem';
 
 const ResultsDisplay = ({ bookData }) => {
   return !bookData ? null : (
-    <div className='container mx-auto flex flex-wrap justify-center md:justify-between gap-4 bg-charcoal/25 backdrop-blur-lg p-4 md:p-10 rounded-lg'>
+    <div className='container mx-auto flex overflow-x-scroll md:overflow-x-hidden p-4 md:justify-between gap-4 bg-charcoal/25 backdrop-blur-lg p-4chrom md:p-10 rounded-lg'>
       {bookData.map((item) => (
         <ResultsDisplayItem
           key={item.id}
