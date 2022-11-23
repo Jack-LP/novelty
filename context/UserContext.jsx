@@ -13,12 +13,16 @@ export const UserWrapper = ({ children }) => {
   const [readingSpeed, setReadingSpeed] = useState(
     getFromStorage('readingSpeed', false) || 230
   );
+  const [bookshelf, setBookshelf] = useState(
+    getFromStorage('bookshelf', true) || []
+  );
 
   useEffect(() => {
     setToStorage('username', username);
     setToStorage('readingSpeed', readingSpeed);
     setToStorage('avatar', avatar);
-  }, [username, avatar, readingSpeed]);
+    setToStorage('bookshelf', JSON.stringify(bookshelf));
+  }, [username, avatar, readingSpeed, bookshelf]);
 
   return (
     <UserContext.Provider
@@ -29,6 +33,8 @@ export const UserWrapper = ({ children }) => {
         setAvatar,
         readingSpeed,
         setReadingSpeed,
+        bookshelf,
+        setBookshelf,
       }}
     >
       {children}

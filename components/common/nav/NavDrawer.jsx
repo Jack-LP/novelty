@@ -4,6 +4,7 @@ import NavButton from './NavButton';
 
 const links = [
   { title: 'Home', href: '/' },
+  { title: 'Bookshelf', href: '/bookshelf' },
   { title: 'Speed test', href: '/speedTest' },
 ];
 

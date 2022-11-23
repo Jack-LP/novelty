@@ -6,14 +6,21 @@ import BackgroundImage from '../../components/common/BackgroundImage';
 import { numberWithCommas } from '../../utilities/numberWithCommas';
 import { convertToHours } from '../../utilities/convertToHours';
 import { useRouter } from 'next/router';
-import { HourglassSplit, Fonts, BookHalf } from 'react-bootstrap-icons';
+import {
+  HourglassSplit,
+  Fonts,
+  BookHalf,
+  PlusCircle,
+  XCircle,
+} from 'react-bootstrap-icons';
 
 const API_KEY = 'AIzaSyADAV_RuIVe-nZHJFf2HxmKdDHtvE_zAmM';
 
 const BookPage = () => {
   const [bookData, setBookData] = useState(null);
+  const [isSaved, setIsSaved] = useState(false);
 
-  const { readingSpeed } = useContext(UserContext);
+  const { readingSpeed, bookshelf, setBookshelf } = useContext(UserContext);
 
   const router = useRouter();
   const { id } = router.query;
@@ -26,6 +33,18 @@ const BookPage = () => {
         setBookData(data.volumeInfo);
       });
   }, [id]);
+
+  const updateBookshelf = (action) => {
+    if (action === 'add') {
+      setBookshelf((prev) => [...prev, { title: bookData.title, bookId: id }]);
+    } else {
+      setBookshelf((prev) =>
+        prev.filter((book) => {
+          return book.bookId !== id;
+        })
+      );
+    }
+  };
 
   return !bookData ? null : (
     <>
@@ -47,9 +66,25 @@ const BookPage = () => {
             />
             <div className='flex flex-col gap-6 w-full bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg'>
               <div className='flex flex-col gap-1 font-playfair text-white'>
-                <h1 className='text-4xl  font-semibold'>
-                  {!bookData.title ? 'Title unknown' : bookData.title}
-                </h1>
+                <div className='flex gap-2 items-center'>
+                  <h1 className='text-4xl font-semibold'>
+                    {!bookData.title ? 'Title unknown' : bookData.title}
+                  </h1>
+                  {bookshelf.map((item) => {
+                    if (item.bookId === id) {
+                      setIsSaved(true);
+                    }
+                  })}
+                  {isSaved ? (
+                    <button onClick={() => updateBookshelf('remove')}>
+                      <XCircle />
+                    </button>
+                  ) : (
+                    <button onClick={() => updateBookshelf('add')}>
+                      <PlusCircle />
+                    </button>
+                  )}
+                </div>
                 <h2 className='text-white/50 font-normal text-lg'>
                   {!bookData.authors ? 'Author(s) unknown' : bookData.authors}
                 </h2>

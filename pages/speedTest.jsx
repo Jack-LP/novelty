@@ -6,6 +6,7 @@ import { speedTestPassage } from '../data/speedTestPassage';
 import { HourglassSplit, Fonts } from 'react-bootstrap-icons';
 
 const SpeedTest = () => {
+  const [hydrated, setHydrated] = useState(false);
   const [timer, setTimer] = useState(0);
   const [isTiming, setIsTiming] = useState(false);
   const [hasTimed, setHasTimed] = useState(false);
@@ -29,6 +30,10 @@ const SpeedTest = () => {
     setReadingSpeed(Math.round((204 / timer) * 60));
     setShowPassage(false);
   };
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   useEffect(() => {
     if (isTiming) {
@@ -58,7 +63,7 @@ const SpeedTest = () => {
               </div>
               <div className='flex gap-2 items-center'>
                 <Fonts size={18} />
-                <span>{readingSpeed ? readingSpeed : '0'} wpm</span>
+                <span>{hydrated ? readingSpeed : '0'} wpm</span>
               </div>
             </div>
             <p className='font-lora'>
