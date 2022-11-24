@@ -18,7 +18,7 @@ const API_KEY = 'AIzaSyADAV_RuIVe-nZHJFf2HxmKdDHtvE_zAmM';
 
 const BookPage = () => {
   const [bookData, setBookData] = useState(null);
-  const [isSaved, setIsSaved] = useState(false);
+  const [isSaved, setIsSaved] = useState(null);
 
   const { readingSpeed, bookshelf, setBookshelf } = useContext(UserContext);
 
@@ -33,6 +33,11 @@ const BookPage = () => {
         setBookData(data.volumeInfo);
       });
   }, [id]);
+
+  useEffect(() => {
+    const checkId = (element) => element.bookId === id;
+    bookshelf.some(checkId) ? setIsSaved(true) : setIsSaved(false);
+  }, [bookshelf, id]);
 
   const updateBookshelf = (action) => {
     if (action === 'add') {
@@ -66,27 +71,27 @@ const BookPage = () => {
             />
             <div className='flex flex-col gap-6 w-full bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg'>
               <div className='flex flex-col gap-1 font-playfair text-white'>
-                <div className='flex gap-2 items-center'>
+                <div className='flex gap-4 items-baseline'>
                   <h1 className='text-4xl font-semibold'>
                     {!bookData.title ? 'Title unknown' : bookData.title}
                   </h1>
-                  {bookshelf.map((item) => {
-                    if (item.bookId === id) {
-                      setIsSaved(true);
-                    }
-                  })}
-                  {isSaved ? (
-                    <button onClick={() => updateBookshelf('remove')}>
-                      <XCircle />
-                    </button>
-                  ) : (
-                    <button onClick={() => updateBookshelf('add')}>
-                      <PlusCircle />
-                    </button>
-                  )}
+                  <div className='flex gap-2 font-inter text-sm items-center'>
+                    {isSaved ? (
+                      <button onClick={() => updateBookshelf('remove')}>
+                        <XCircle size={22} />
+                      </button>
+                    ) : (
+                      <button onClick={() => updateBookshelf('add')}>
+                        <PlusCircle size={22} />
+                      </button>
+                    )}
+                    <span>{isSaved ? 'Remove' : 'Add'}</span>
+                  </div>
                 </div>
                 <h2 className='text-white/50 font-normal text-lg'>
-                  {!bookData.authors ? 'Author(s) unknown' : bookData.authors}
+                  {!bookData.authors
+                    ? 'Author(s) unknown'
+                    : bookData.authors.join(', ')}
                 </h2>
               </div>
               <p className='text-white font-lora leading-7 order-2'>
