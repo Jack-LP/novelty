@@ -18,7 +18,7 @@ const User = () => {
         </Head>
         <BackgroundImage image={'img/user-bg.jpg'} />
         <EditModal showModal={showModal} setShowModal={setShowModal} />
-        <div className='container mx-auto pt-28 flex flex-col gap-14'>
+        <div className='container mx-auto py-28 flex flex-col gap-14'>
           <UserCard setShowModal={setShowModal} />
         </div>
       </>

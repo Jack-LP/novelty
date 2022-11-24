@@ -30,7 +30,7 @@ export default function Home() {
       </Head>
       <BackgroundImage image={'img/home-bg.jpg'} />
       <Toaster />
-      <div className='container mx-auto pt-28 flex flex-col gap-14'>
+      <div className='container mx-auto pt-28 pb-16 flex flex-col gap-14'>
         <Hero setBookData={setBookData} />
         <ResultsDisplay bookData={bookData} displayToast={displayToast} />
       </div>

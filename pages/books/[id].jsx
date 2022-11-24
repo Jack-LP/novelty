@@ -73,7 +73,7 @@ const BookPage = () => {
         <title>novelty | {bookData.title}</title>
       </Head>
       <Toaster />
-      <div className='pt-4 xl:pt-28'>
+      <div className='pt-4 xl:py-28'>
         <BackgroundImage image='/img/user-bg.jpg' />
         <div className='container mx-auto flex flex-col gap-4'>
           <div className='flex flex-col xl:flex-row items-center gap-4 xl:gap-10'>

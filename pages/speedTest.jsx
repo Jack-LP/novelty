@@ -49,7 +49,7 @@ const SpeedTest = () => {
       <Head>
         <title>novelty | Speed Test</title>
       </Head>
-      <div className='pt-28'>
+      <div className='py-28'>
         <BackgroundImage image='img/user-bg.jpg' />
         <div className='container mx-auto flex flex-col gap-4'>
           <div className='flex flex-col items-start gap-4 bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg text-white'>

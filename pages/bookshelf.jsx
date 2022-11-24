@@ -33,11 +33,16 @@ const Bookshelf = () => {
         <title>novelty | Bookshelf</title>
       </Head>
       <Toaster />
-      <div className='pt-28'>
+      <div className='py-28'>
         <BackgroundImage image={'/img/user-bg.jpg'} />
         <div className='container mx-auto bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg'>
           {hydrated ? (
             <div className='flex flex-col gap-4 items-center text-center text-white'>
+              {bookshelf.length === 0 ? null : (
+                <div className='self-start font-playfair text-2xl md:text-4xl lg:text-6xl font-bold'>
+                  Bookshelf
+                </div>
+              )}
               {bookshelf.length === 0 ? (
                 <>
                   <BookshelfIcon className='w-16 h-16' />
@@ -50,7 +55,7 @@ const Bookshelf = () => {
                   </h2>
                 </>
               ) : (
-                <div className='flex gap-2'>
+                <div className='flex gap-8 flex-wrap justify-center'>
                   {bookshelf.map((book) => (
                     <BookDisplay
                       key={book.bookId}
