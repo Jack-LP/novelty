@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import Head from 'next/head';
 import UserContext from '../../context/UserContext';
 import axios from 'axios';
@@ -42,13 +43,28 @@ const BookPage = () => {
   const updateBookshelf = (action) => {
     if (action === 'add') {
       setBookshelf((prev) => [...prev, { title: bookData.title, bookId: id }]);
+      displayToast('add');
     } else {
       setBookshelf((prev) =>
         prev.filter((book) => {
           return book.bookId !== id;
         })
       );
+      displayToast('remove');
     }
+  };
+
+  const displayToast = (action) => {
+    toast(action === 'add' ? 'Added to bookshelf' : 'Removed from bookshelf', {
+      duration: 1500,
+      position: 'bottom-left',
+      icon: action === 'add' ? '📗' : '📕',
+      style: {
+        backgroundColor: '#2f2f2f',
+        color: 'white',
+        fontFamily: 'Inter',
+      },
+    });
   };
 
   return !bookData ? null : (
@@ -56,6 +72,7 @@ const BookPage = () => {
       <Head>
         <title>novelty | {bookData.title}</title>
       </Head>
+      <Toaster />
       <div className='pt-4 xl:pt-28'>
         <BackgroundImage image='/img/user-bg.jpg' />
         <div className='container mx-auto flex flex-col gap-4'>
@@ -75,18 +92,15 @@ const BookPage = () => {
                   <h1 className='text-4xl font-semibold'>
                     {!bookData.title ? 'Title unknown' : bookData.title}
                   </h1>
-                  <div className='flex gap-2 font-inter text-sm items-center'>
-                    {isSaved ? (
-                      <button onClick={() => updateBookshelf('remove')}>
-                        <XCircle size={22} />
-                      </button>
-                    ) : (
-                      <button onClick={() => updateBookshelf('add')}>
-                        <PlusCircle size={22} />
-                      </button>
-                    )}
-                    <span>{isSaved ? 'Remove' : 'Add'}</span>
-                  </div>
+                  {isSaved ? (
+                    <button onClick={() => updateBookshelf('remove')}>
+                      <XCircle size={22} />
+                    </button>
+                  ) : (
+                    <button onClick={() => updateBookshelf('add')}>
+                      <PlusCircle size={22} />
+                    </button>
+                  )}
                 </div>
                 <h2 className='text-white/50 font-normal text-lg'>
                   {!bookData.authors

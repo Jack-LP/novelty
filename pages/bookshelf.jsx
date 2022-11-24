@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Head from 'next/head';
+import toast, { Toaster } from 'react-hot-toast';
 import UserContext from '../context/UserContext';
 import BackgroundImage from '../components/common/BackgroundImage';
 import BookDisplay from '../components/bookshelf/BookDisplay';
@@ -13,11 +14,25 @@ const Bookshelf = () => {
     setHydrated(true);
   }, []);
 
+  const displayToast = () => {
+    toast('Removed from bookshelf', {
+      duration: 1500,
+      position: 'bottom-left',
+      icon: '📕',
+      style: {
+        backgroundColor: '#2f2f2f',
+        color: 'white',
+        fontFamily: 'Inter',
+      },
+    });
+  };
+
   return (
     <>
       <Head>
         <title>novelty | Bookshelf</title>
       </Head>
+      <Toaster />
       <div className='pt-28'>
         <BackgroundImage image={'/img/user-bg.jpg'} />
         <div className='container mx-auto bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg'>
@@ -37,7 +52,13 @@ const Bookshelf = () => {
               ) : (
                 <div className='flex gap-2'>
                   {bookshelf.map((book) => (
-                    <BookDisplay key={book.bookId} bookId={book.bookId} />
+                    <BookDisplay
+                      key={book.bookId}
+                      bookId={book.bookId}
+                      bookshelf={bookshelf}
+                      setBookshelf={setBookshelf}
+                      displayToast={displayToast}
+                    />
                   ))}
                 </div>
               )}

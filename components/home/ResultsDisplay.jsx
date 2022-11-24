@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from '../../context/UserContext';
 import ResultsDisplayItem from './ResultsDisplayItem';
 
-const ResultsDisplay = ({ bookData }) => {
+const ResultsDisplay = ({ bookData, displayToast }) => {
+  const { bookshelf, setBookshelf } = useContext(UserContext);
+
   return !bookData ? null : (
     <div className='container mx-auto flex overflow-x-scroll md:overflow-x-hidden p-4 md:justify-between gap-4 bg-charcoal/25 backdrop-blur-lg p-4chrom md:p-10 rounded-lg'>
       {bookData.map((item) => (
@@ -21,6 +24,9 @@ const ResultsDisplay = ({ bookData }) => {
               ? 'Author(s) unknown'
               : item.volumeInfo.authors[0]
           }
+          bookshelf={bookshelf}
+          setBookshelf={setBookshelf}
+          displayToast={displayToast}
         />
       ))}
     </div>

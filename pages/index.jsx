@@ -1,11 +1,25 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
+import toast, { Toaster } from 'react-hot-toast';
 import BackgroundImage from '../components/common/BackgroundImage';
 import Hero from '../components/home/Hero';
 import ResultsDisplay from '../components/home/ResultsDisplay';
 
 export default function Home() {
   const [bookData, setBookData] = useState(null);
+
+  const displayToast = (action) => {
+    toast(action === 'add' ? 'Added to bookshelf' : 'Removed from bookshelf', {
+      duration: 1500,
+      position: 'bottom-left',
+      icon: action === 'add' ? '📗' : '📕',
+      style: {
+        backgroundColor: '#2f2f2f',
+        color: 'white',
+        fontFamily: 'Inter',
+      },
+    });
+  };
 
   return (
     <>
@@ -15,9 +29,10 @@ export default function Home() {
         <link rel='icon' href='/favicon.svg' />
       </Head>
       <BackgroundImage image={'img/home-bg.jpg'} />
+      <Toaster />
       <div className='container mx-auto pt-28 flex flex-col gap-14'>
         <Hero setBookData={setBookData} />
-        <ResultsDisplay bookData={bookData} />
+        <ResultsDisplay bookData={bookData} displayToast={displayToast} />
       </div>
     </>
   );
