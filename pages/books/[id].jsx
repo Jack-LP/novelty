@@ -27,13 +27,17 @@ const BookPage = () => {
   const { id } = router.query;
 
   useEffect(() => {
-    axios
-      .get(`https://www.googleapis.com/books/v1/volumes/${id}?key=${API_KEY}`)
-      .then((res) => {
-        const data = res.data;
-        setBookData(data.volumeInfo);
-      });
-  }, [id]);
+    !bookData
+      ? axios
+          .get(
+            `https://www.googleapis.com/books/v1/volumes/${id}?key=${API_KEY}`
+          )
+          .then((res) => {
+            const data = res.data;
+            setBookData(data.volumeInfo);
+          })
+      : null;
+  }, [id, bookData]);
 
   useEffect(() => {
     const checkId = (element) => element.bookId === id;

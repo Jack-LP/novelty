@@ -21,11 +21,18 @@ const UserCard = ({ setShowModal }) => {
           <h2 className='font-inter text-lg font-light'>
             Reading Speed: {!readingSpeed ? null : readingSpeed} wpm
           </h2>
-          <Link href='/speedTest'>
-            <button className='bg-charcoal p-1.5 font-inter font-light rounded-lg'>
-              Take a speed test
-            </button>
-          </Link>
+          <div className='flex jusitfy-between gap-2'>
+            <Link href='/bookshelf'>
+              <button className='bg-charcoal p-1.5 font-inter font-light rounded-lg'>
+                My Bookshelf
+              </button>
+            </Link>
+            <Link href='/speedTest'>
+              <button className='bg-charcoal p-1.5 font-inter font-light rounded-lg'>
+                Take a speed test
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
       <button

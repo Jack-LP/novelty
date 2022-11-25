@@ -27,7 +27,7 @@ const SpeedTest = () => {
 
   const stopTimer = () => {
     setIsTiming(false);
-    setReadingSpeed(Math.round((204 / timer) * 60));
+    setReadingSpeed(Math.round((179 / timer) * 60));
     setShowPassage(false);
   };
 
