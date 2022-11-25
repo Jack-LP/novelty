@@ -1,34 +1,84 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div id="top"></div>
 
-## Getting Started
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <img src="https://i.imgur.com/EWtutML.png" width="400px" />
+</div>
 
-First, run the development server:
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#about-novelty">About novelty</a></li>
+	<li><a href="#live-site">Live site</a></li>
+	<li><a href="#built-with">Built With</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<!-- ABOUT THE PROJECT -->
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## About novelty
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+![site-screenshot](https://i.imgur.com/Esebnpj.jpg)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+The purpose of novelty is to search for, save and view books using the [google books API](https://developers.google.com/books/docs/v1/using). The home screen presents the user with a search field, this will query the API and return 5 books ordered by relevance. From here you can view a title by clicking on it which takes you to a dynamic route providing additional information. Here you can view the description, page count, word count and estimated reading time. You can also save a book to your bookshelf for easier access. Reading time is estimated using the average reading speed, this can be changed by navigating to the speed test page in which instructions are provided and a test given to measure your reading pace. This value is then stored and used on all titles, giving the user an accurate estimation. There is also a user page which allows for simple customisation; an avatar and username can be submitted and displayed. All values are stored in local storage and persist across page refreshes.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-## Learn More
+<!-- LIVE SITE -->
 
-To learn more about Next.js, take a look at the following resources:
+## Live Site
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[Click here to view the site live](https://novelty-jp.vercel.app/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-## Deploy on Vercel
+### Built With
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- NextJS
+- Tailwind CSS
+- Google Books API
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- USAGE EXAMPLES -->
+
+## Usage
+
+![chrome_Zm86pOJLKg](https://user-images.githubusercontent.com/90701888/204002646-ebf7ebc4-7189-4080-ae0b-af7e3bf53dcc.gif)
+novelty allows you to:
+
+- Search for 10 million + books
+- View titles and their respective reading times
+- Test your own reading speed to accurately determine reading times
+- Save books to your own bookshelf
+- Customise profile
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+<!-- ACKNOWLEDGMENTS -->
+
+## Acknowledgments
+
+- [Vercel](https://vercel.com)
+- [NextJS](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Google Books API](https://developers.google.com/books/docs/v1/using)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+![6874684](https://user-images.githubusercontent.com/90701888/204004446-f7a2179f-05ff-41c1-b6d9-6d849c58588c.png)
+
+<!-- CONTACT -->
+
+## Contact
+
+Jack Paget - <a href="mailto:jackpaget1@gmail.com">jackpaget1@gmail.com</a>
+
+Project Link: [novelty](https://github.com/Jack-LP/novelty)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
