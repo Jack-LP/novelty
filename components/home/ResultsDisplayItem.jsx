@@ -33,14 +33,17 @@ const ResultsDisplayItem = ({
   };
 
   return (
-    <div className='flex flex-col gap-3 text-white w-[120px] lg:w-[150px] xl:w-[180px] 2xl:w-[200px] overflow-hidden  whitespace-nowrap text-ellipsis relative'>
+    <div className='flex flex-col gap-3 text-white relative'>
       <button
         className='absolute top-2 right-2 bg-charcoal rounded-full'
         onClick={() => updateBookshelf(isSaved ? 'remove' : 'add')}
       >
         {isSaved ? <X size={28} /> : <Plus size={28} />}
       </button>
-      <Link href={`/books/${bookId}`}>
+      <Link
+        href={`/books/${bookId}`}
+        className='flex flex-col gap-3 text-white w-[120px] lg:w-[150px] xl:w-[180px] 2xl:w-[200px] overflow-hidden whitespace-nowrap text-ellipsis'
+      >
         <img
           className='h-[180px] lg:h-[260px] xl:h-[290px] 2xl:h-[320px] object-cover rounded-md'
           src={thumbnail}
