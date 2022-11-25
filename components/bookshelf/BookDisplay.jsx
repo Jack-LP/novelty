@@ -40,12 +40,20 @@ const BookDisplay = ({ bookId, setBookshelf, displayToast }) => {
         <Link href={`/books/${bookId}`}>
           <img
             className='h-[180px] lg:h-[260px] xl:h-[290px] 2xl:h-[320px] object-cover rounded-md'
-            src={bookData.imageLinks.thumbnail}
+            src={
+              !bookData.imageLinks
+                ? '/img/bookCover.svg'
+                : bookData.imageLinks.thumbnail
+            }
             alt={bookData.title}
           />
           <div className='flex flex-col font-lora'>
-            <span className='font-medium text-white'>{bookData.title}</span>
-            <span className='text-white/50 text-sm'>{bookData.authors[0]}</span>
+            <span className='font-medium text-white'>
+              {!bookData.title ? 'Title unknown' : bookData.title}
+            </span>
+            <span className='text-white/50 text-sm'>
+              {!bookData.authors ? 'Author(s) unknown' : bookData.authors[0]}
+            </span>
           </div>
         </Link>
       </div>
