@@ -4,7 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import UserContext from '../context/UserContext';
 import BackgroundImage from '../components/common/BackgroundImage';
 import BookDisplay from '../components/bookshelf/BookDisplay';
-import { Bookshelf as BookshelfIcon } from 'react-bootstrap-icons';
+import { Bookshelf as BookshelfIcon, PlusCircle } from 'react-bootstrap-icons';
 
 const Bookshelf = () => {
   const [hydrated, setHydrated] = useState(false);
@@ -35,7 +35,7 @@ const Bookshelf = () => {
       <Toaster />
       <div className='py-28'>
         <BackgroundImage image={'/img/user-bg.jpg'} />
-        <div className='container mx-auto bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg'>
+        <div className='container mx-auto bg-charcoal/25 backdrop-blur-lg px-2 py-10 md:px-10 rounded-lg'>
           {hydrated ? (
             <div className='flex flex-col gap-4 items-center text-center text-white'>
               {bookshelf.length === 0 ? null : (
@@ -50,8 +50,8 @@ const Bookshelf = () => {
                     Your bookshelf is currently empty
                   </h1>
                   <h2 className='md:text-xl text-neutral-400'>
-                    Save books by clicking the &quot;Add to bookshelf&quot;
-                    button
+                    Save books by clicking the{' '}
+                    <PlusCircle className='inline mb-1' size={20} /> button
                   </h2>
                 </>
               ) : (
