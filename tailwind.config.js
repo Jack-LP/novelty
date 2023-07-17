@@ -10,6 +10,9 @@ module.exports = {
       colors: {
         paper: '#DAD2CE',
         charcoal: '#2f2f2f',
+        dark: {
+          100: '#161616',
+        },
       },
       fontFamily: {
         lora: ['Lora', 'serif'],

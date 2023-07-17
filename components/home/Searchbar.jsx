@@ -28,17 +28,15 @@ const Searchbar = ({ setBookData }) => {
   };
 
   return (
-    <div className='bg-charcoal rounded-lg flex items-center xl:w-1/3'>
+    <div className='relative'>
+      <Search className='absolute top-3 left-3 text-white/20' />
       <input
         onKeyDown={(e) => handleKeyDown(e)}
         onChange={(e) => setSearch(e.target.value)}
+        className='bg-transparent border-2 outline-none border-white/10 rounded-md pl-9 h-10 w-[470px]'
         type='text'
-        placeholder='Search'
-        className='bg-charcoal placeholder-white/20 text-neutral-300 pl-3 md:pl-4 py-2 md:py-3 w-full rounded-lg font-inter outline-none focus:ring-1 ring-white/50'
+        placeholder='Search...'
       />
-      <button className='px-3' onClick={fetchSearchData}>
-        <Search color='white' className='text-[20px] md:text-[24px]' />
-      </button>
     </div>
   );
 };
