@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { BookHalf } from 'react-bootstrap-icons';
 import NavDrawer from './NavDrawer';
 import NavButton from './NavButton';
 import Searchbar from './Searchbar';
@@ -18,7 +19,8 @@ const Navbar = () => {
     <>
       <NavDrawer isOpen={isOpen} setIsOpen={setIsOpen} avatar={avatarDisplay} />
       <nav className='flex gap-20 items-center py-6 text-white border-b-[1px] border-white/5 z-10'>
-        <Link href='/' className='font-semibold'>
+        <Link href='/' className='font-semibold flex items-center gap-2'>
+          <BookHalf size={20} />
           Novelty
         </Link>
         <Searchbar />
