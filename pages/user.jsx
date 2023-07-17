@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Head from 'next/head';
-import BackgroundImage from '../components/common/BackgroundImage';
 import UserCard from '../components/user/UserCard';
 import UserContext from '../context/UserContext';
 import EditModal from '../components/user/EditModal';
@@ -12,16 +11,15 @@ const User = () => {
 
   useEffect(() => {
     setUserDisplay(
-      <>
+      <div className='col-span-9'>
         <Head>
           <title>novelty | {username}</title>
         </Head>
-        <BackgroundImage image={'img/user-bg.jpg'} />
         <EditModal showModal={showModal} setShowModal={setShowModal} />
-        <div className='container mx-auto py-28 flex flex-col gap-14'>
+        <div className='flex flex-col gap-14'>
           <UserCard setShowModal={setShowModal} />
         </div>
-      </>
+      </div>
     );
   }, [username, readingSpeed, avatar, showModal]);
 
