@@ -1,15 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
 import NavDrawer from './NavDrawer';
 import NavButton from './NavButton';
-import Searchbar from '../../home/Searchbar';
+import Searchbar from './Searchbar';
 import UserContext from '../../../context/UserContext';
 import Link from 'next/link';
-
-const links = [
-  { title: 'Home', href: '/' },
-  { title: 'Bookshelf', href: '/bookshelf' },
-  { title: 'Speed test', href: '/speedTest' },
-];
 
 const Navbar = () => {
   const { avatar } = useContext(UserContext);
@@ -23,7 +17,7 @@ const Navbar = () => {
   return (
     <>
       <NavDrawer isOpen={isOpen} setIsOpen={setIsOpen} avatar={avatarDisplay} />
-      <nav className='flex gap-20 items-center py-6 text-white border-b-[1px] border-white/5'>
+      <nav className='flex gap-20 items-center py-6 text-white border-b-[1px] border-white/5 z-10'>
         <Link href='/' className='font-semibold'>
           Novelty
         </Link>

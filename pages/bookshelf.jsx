@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import Head from 'next/head';
 import toast, { Toaster } from 'react-hot-toast';
 import UserContext from '../context/UserContext';
-import BackgroundImage from '../components/common/BackgroundImage';
 import BookDisplay from '../components/bookshelf/BookDisplay';
+import CircleDisplay from '../components/bookshelf/CircleDisplay';
+import Heading from '../components/common/Heading';
 import { Bookshelf as BookshelfIcon, PlusCircle } from 'react-bootstrap-icons';
 
 const Bookshelf = () => {
@@ -28,50 +29,16 @@ const Bookshelf = () => {
   };
 
   return (
-    <>
+    <div className='col-span-9'>
       <Head>
         <title>novelty | Bookshelf</title>
       </Head>
       <Toaster />
-      <div className='py-28'>
-        <BackgroundImage image={'/img/user-bg.jpg'} />
-        <div className='container mx-auto bg-charcoal/25 backdrop-blur-lg px-2 py-10 md:px-10 rounded-lg'>
-          {hydrated ? (
-            <div className='flex flex-col gap-4 items-center text-center text-white'>
-              {bookshelf.length === 0 ? null : (
-                <div className='self-start font-playfair text-2xl md:text-4xl lg:text-6xl font-bold'>
-                  Bookshelf
-                </div>
-              )}
-              {bookshelf.length === 0 ? (
-                <>
-                  <BookshelfIcon className='w-16 h-16' />
-                  <h1 className='text-2xl md:text-4xl font-lora'>
-                    Your bookshelf is currently empty
-                  </h1>
-                  <h2 className='md:text-xl text-neutral-400'>
-                    Save books by clicking the{' '}
-                    <PlusCircle className='inline mb-1' size={20} /> button
-                  </h2>
-                </>
-              ) : (
-                <div className='flex gap-8 flex-wrap justify-center'>
-                  {bookshelf.map((book) => (
-                    <BookDisplay
-                      key={book.bookId}
-                      bookId={book.bookId}
-                      bookshelf={bookshelf}
-                      setBookshelf={setBookshelf}
-                      displayToast={displayToast}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-          ) : null}
-        </div>
+      <Heading>Bookshelf</Heading>
+      <div className='bg-dark-200 p-5 rounded-md'>
+        <CircleDisplay />
       </div>
-    </>
+    </div>
   );
 };
 

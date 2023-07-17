@@ -49,11 +49,11 @@ const SpeedTest = () => {
       <Head>
         <title>novelty | Speed Test</title>
       </Head>
-      <div className='py-28'>
+      <div className='col-span-9'>
         <BackgroundImage image='img/user-bg.jpg' />
         <div className='container mx-auto flex flex-col gap-4'>
           <div className='flex flex-col items-start gap-4 bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg text-white'>
-            <h1 className='font-playfair text-2xl md:text-4xl lg:text-6xl font-bold'>
+            <h1 className=' text-2xl md:text-4xl lg:text-6xl font-bold'>
               Reading speed test
             </h1>
             <div className='flex gap-4 font-inter'>
@@ -66,7 +66,7 @@ const SpeedTest = () => {
                 <span>{hydrated ? readingSpeed : '0'} wpm</span>
               </div>
             </div>
-            <p className='font-lora'>
+            <p className=''>
               Click the button below to begin the test. Read the passage that
               appears at your regular reading pace, ensuring full comprehension.
               Once you’ve finished reading the passage, press the stop button to
@@ -91,7 +91,7 @@ const SpeedTest = () => {
             <p
               className={`${
                 showPassage ? 'block' : 'hidden'
-              } font-lora text-lg leading-7`}
+              }  text-lg leading-7`}
             >
               {speedTestPassage}
             </p>

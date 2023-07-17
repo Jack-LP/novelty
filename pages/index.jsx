@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import toast, { Toaster } from 'react-hot-toast';
 import Hero from '../components/home/Hero';
-import ResultsDisplay from '../components/home/ResultsDisplay';
 
 export default function Home() {
-  const [bookData, setBookData] = useState(null);
-
   const displayToast = (action) => {
     toast(action === 'add' ? 'Added to bookshelf' : 'Removed from bookshelf', {
       duration: 1500,
@@ -28,6 +25,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.svg' />
       </Head>
       <Toaster />
+      <Hero />
     </>
   );
 }

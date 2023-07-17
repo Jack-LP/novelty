@@ -24,7 +24,7 @@ const NavDrawer = ({ isOpen, setIsOpen, avatar }) => {
             className='w-16 h-16 rounded-full object-cover'
           />
         </Link>
-        <div className='flex flex-col gap-6 font-inter items-center'>
+        <div className='flex flex-col gap-6 items-center'>
           {links.map((link) => (
             <Link
               onClick={() => setIsOpen(false)}

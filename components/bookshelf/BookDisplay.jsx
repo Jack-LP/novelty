@@ -47,7 +47,7 @@ const BookDisplay = ({ bookId, setBookshelf, displayToast }) => {
             }
             alt={bookData.title}
           />
-          <div className='flex flex-col font-lora'>
+          <div className='flex flex-col '>
             <span className='font-medium text-white'>
               {!bookData.title ? 'Title unknown' : bookData.title}
             </span>

@@ -17,6 +17,8 @@ export const UserWrapper = ({ children }) => {
     getFromStorage('bookshelf', true) || []
   );
 
+  const [bookData, setBookData] = useState(null);
+
   useEffect(() => {
     setToStorage('username', username);
     setToStorage('readingSpeed', readingSpeed);
@@ -35,6 +37,8 @@ export const UserWrapper = ({ children }) => {
         setReadingSpeed,
         bookshelf,
         setBookshelf,
+        bookData,
+        setBookData,
       }}
     >
       {children}

@@ -12,6 +12,7 @@ module.exports = {
         charcoal: '#2f2f2f',
         dark: {
           100: '#161616',
+          200: '#121212',
         },
       },
       fontFamily: {

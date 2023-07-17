@@ -91,7 +91,7 @@ const BookPage = () => {
               alt={bookData.title}
             />
             <div className='flex flex-col gap-6 w-full bg-charcoal/25 backdrop-blur-lg p-10 rounded-lg'>
-              <div className='flex flex-col gap-1 font-playfair text-white'>
+              <div className='flex flex-col gap-1  text-white'>
                 <div className='flex gap-4 items-baseline'>
                   <h1 className='text-4xl font-semibold'>
                     {!bookData.title ? 'Title unknown' : bookData.title}
@@ -112,7 +112,7 @@ const BookPage = () => {
                     : bookData.authors.join(', ')}
                 </h2>
               </div>
-              <p className='text-white font-lora leading-7 order-2'>
+              <p className='text-white  leading-7 order-2'>
                 {!bookData.description
                   ? 'No Description'
                   : bookData.description.replace(

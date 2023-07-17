@@ -14,7 +14,7 @@ const UserCard = ({ setShowModal }) => {
         alt={!username ? null : username}
       />
       <div className='flex flex-col items-center md:items-start gap-6 text-white'>
-        <h1 className='text-4xl font-playfair font-semibold'>
+        <h1 className='text-4xl  font-semibold'>
           {!username ? null : username}
         </h1>
         <div className='flex flex-col items-center md:items-start gap-2'>
