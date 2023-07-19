@@ -20,7 +20,7 @@ const Sidebar = () => {
   ];
 
   return !hydrated ? null : (
-    <div className='flex flex-col gap-10 text-sm'>
+    <div className='flex flex-col gap-10'>
       <ul className='flex flex-col gap-2'>
         {navElements.map((item) => (
           <Link key={item.title} href={item.path}>

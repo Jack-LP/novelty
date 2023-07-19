@@ -7,6 +7,7 @@ const ResultsDisplayItem = ({
   thumbnail,
   title,
   author,
+  pageCount,
   bookshelf,
   openModal,
 }) => {
@@ -21,7 +22,7 @@ const ResultsDisplayItem = ({
     <div className='flex flex-col relative'>
       <button
         className='absolute top-2 right-2 bg-dark-200 rounded-md'
-        onClick={() => openModal(bookId, title)}
+        onClick={() => openModal(bookId, title, author, thumbnail, pageCount)}
       >
         {isSaved ? <X size={28} /> : <Plus size={28} />}
       </button>

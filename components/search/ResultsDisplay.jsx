@@ -1,16 +1,22 @@
 import React, { useContext, useEffect, useState } from 'react';
 import UserContext from '../../context/UserContext';
-import ModalAddBook from './ModalAddBook';
+import ModalAddBook from '../common/ModalAddBook';
 import ResultsDisplayItem from './ResultsDisplayItem';
 
 const ResultsDisplay = () => {
   const [hydrated, setHydrated] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [currentBook, setCurrentBook] = useState();
+  const [currentBook, setCurrentBook] = useState({});
   const { bookshelf, setBookshelf, bookData } = useContext(UserContext);
 
-  const openModal = (bookId, title) => {
-    setCurrentBook(bookId);
+  const openModal = (bookId, title, author, thumbnail, pageCount) => {
+    setCurrentBook({
+      id: bookId,
+      title: title,
+      author: author,
+      thumbnail: thumbnail,
+      pageCount: pageCount,
+    });
     setShowModal(true);
   };
 
@@ -36,6 +42,9 @@ const ResultsDisplay = () => {
               !item.volumeInfo.authors
                 ? 'Author(s) unknown'
                 : item.volumeInfo.authors[0]
+            }
+            pageCount={
+              !item.volumeInfo.pageCount ? 0 : item.volumeInfo.pageCount
             }
             bookshelf={bookshelf}
             setBookshelf={setBookshelf}

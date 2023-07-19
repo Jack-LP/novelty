@@ -37,8 +37,13 @@ const CircleId = () => {
         <div className='flex flex-wrap gap-6'>
           {selectedCircle.books.map((book) => (
             <BookDisplay
-              key={book}
-              bookId={book}
+              key={book.id}
+              bookId={book.id}
+              title={book.title}
+              author={book.author}
+              thumbnail={book.thumbnail}
+              pageCount={book.pageCount}
+              circleId={circleId}
               setPageCounts={setPageCounts}
             />
           ))}

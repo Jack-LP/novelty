@@ -11,7 +11,7 @@ const ModalAddBook = ({ setShowModal, currentBook }) => {
     const newData = [...bookCircles];
     newData[index] = {
       ...newData[index],
-      books: [...newData[index].books, currentBook],
+      books: [...newData[index].books, { ...currentBook }],
     };
 
     setBookCircles(newData);
