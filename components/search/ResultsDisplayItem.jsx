@@ -8,7 +8,7 @@ const ResultsDisplayItem = ({
   title,
   author,
   bookshelf,
-  setBookshelf,
+  openModal,
 }) => {
   const [isSaved, setIsSaved] = useState(null);
 
@@ -17,23 +17,11 @@ const ResultsDisplayItem = ({
     bookshelf.some(checkId) ? setIsSaved(true) : setIsSaved(false);
   }, [bookshelf, bookId]);
 
-  const updateBookshelf = (action) => {
-    if (action === 'add') {
-      setBookshelf((prev) => [...prev, { title: title, bookId: bookId }]);
-    } else {
-      setBookshelf((prev) =>
-        prev.filter((book) => {
-          return book.bookId !== bookId;
-        })
-      );
-    }
-  };
-
   return (
     <div className='flex flex-col relative'>
       <button
         className='absolute top-2 right-2 bg-dark-200 rounded-md'
-        onClick={() => updateBookshelf(isSaved ? 'remove' : 'add')}
+        onClick={() => openModal(bookId, title)}
       >
         {isSaved ? <X size={28} /> : <Plus size={28} />}
       </button>

@@ -24,7 +24,7 @@ const Bookshelf = () => {
         <title>novelty | Bookshelf</title>
       </Head>
       <Heading>Bookshelf</Heading>
-      <div className='bg-dark-200 p-5 rounded-md flex flex-wrap gap-3'>
+      <div className='flex flex-wrap gap-3'>
         {bookCircles.map((circle) => (
           <CircleDisplay circle={circle} key={circle.name} />
         ))}

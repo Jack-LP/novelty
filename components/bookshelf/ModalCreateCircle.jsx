@@ -11,7 +11,10 @@ const ModalCreateCircle = ({ setShowModal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setBookCircles((prev) => [...prev, { name: nameInput, color: colorInput }]);
+    setBookCircles((prev) => [
+      ...prev,
+      { name: nameInput, color: colorInput, books: [] },
+    ]);
   };
 
   return (

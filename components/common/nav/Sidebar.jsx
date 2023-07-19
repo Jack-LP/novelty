@@ -1,6 +1,16 @@
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useContext } from 'react';
+import UserContext from '../../../context/UserContext';
 
 const Sidebar = () => {
+  const [hydrated, setHydrated] = useState(false);
+  const { bookCircles } = useContext(UserContext);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
   const navElements = [
     { title: 'Home', path: '/' },
     { title: 'Featured', path: '/featured' },
@@ -9,7 +19,7 @@ const Sidebar = () => {
     { title: 'Random', path: '' },
   ];
 
-  return (
+  return !hydrated ? null : (
     <div className='flex flex-col gap-10 text-sm'>
       <ul className='flex flex-col gap-2'>
         {navElements.map((item) => (
@@ -21,10 +31,15 @@ const Sidebar = () => {
       <div className='flex flex-col gap-2'>
         <p className='uppercase text-white/25 text-sm'>Book Circles</p>
         <ul className='flex flex-col gap-2'>
-          <li className='flex items-center gap-2'>
-            <div className='w-[11px] h-[11px] rounded-full border-2 border-[#3c4982]'></div>
-            <a href=''>Dwemer</a>
-          </li>
+          {bookCircles.map((circle) => (
+            <li className='flex items-center gap-2' key={circle.name}>
+              <div
+                style={{ borderColor: circle.color }}
+                className='w-[11px] h-[11px] rounded-full border-2'
+              ></div>
+              <Link href={`/bookshelf/${circle.name}`}>{circle.name}</Link>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

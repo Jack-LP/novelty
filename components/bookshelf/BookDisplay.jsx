@@ -5,8 +5,8 @@ import { X } from 'react-bootstrap-icons';
 
 const API_KEY = 'AIzaSyADAV_RuIVe-nZHJFf2HxmKdDHtvE_zAmM';
 
-const BookDisplay = ({ bookId, setBookshelf, displayToast }) => {
-  const [bookData, setBookData] = useState(null);
+const BookDisplay = ({ bookId, setPageCounts }) => {
+  const [bookDisplayData, setBookDisplayData] = useState(null);
 
   useEffect(() => {
     axios
@@ -15,9 +15,10 @@ const BookDisplay = ({ bookId, setBookshelf, displayToast }) => {
       )
       .then((res) => {
         const data = res.data;
-        setBookData(data.volumeInfo);
+        setBookDisplayData(data.volumeInfo);
+        setPageCounts((prev) => [...prev, data.volumeInfo.pageCount]);
       });
-  }, [bookId]);
+  }, [bookId, setPageCounts]);
 
   const removeFromShelf = () => {
     setBookshelf((prev) =>
@@ -25,35 +26,39 @@ const BookDisplay = ({ bookId, setBookshelf, displayToast }) => {
         return book.bookId !== bookId;
       })
     );
-    displayToast();
   };
 
-  return !bookData ? null : (
+  return !bookDisplayData ? null : (
     <div>
-      <div className='flex flex-col gap-3 text-white w-[120px] lg:w-[150px] xl:w-[180px] 2xl:w-[200px] overflow-hidden whitespace-nowrap text-ellipsis relative'>
+      <div className='flex flex-col relative'>
         <button
-          className='absolute top-2 right-2 bg-charcoal rounded-full'
+          className='absolute top-2 right-2 bg-dark-200 rounded-md'
           onClick={removeFromShelf}
         >
           <X size={28} />
         </button>
-        <Link href={`/books/${bookId}`}>
+        <Link
+          className='w-[120px] lg:w-[150px] xl:w-[180px] 2xl:w-[200px]'
+          href={`/books/${bookId}`}
+        >
           <img
-            className='h-[180px] lg:h-[260px] xl:h-[290px] 2xl:h-[320px] object-cover rounded-md'
+            className='h-[180px] lg:h-[260px] xl:h-[290px] 2xl:h-[320px] object-cover'
             src={
-              !bookData.imageLinks
+              !bookDisplayData.imageLinks
                 ? '/img/bookCover.svg'
-                : bookData.imageLinks.thumbnail
+                : bookDisplayData.imageLinks.thumbnail
             }
-            alt={bookData.title}
+            alt={bookDisplayData.title}
           />
-          <div className='flex flex-col '>
-            <span className='font-medium text-white'>
-              {!bookData.title ? 'Title unknown' : bookData.title}
-            </span>
-            <span className='text-white/50 text-sm'>
-              {!bookData.authors ? 'Author(s) unknown' : bookData.authors[0]}
-            </span>
+          <div className='flex flex-col'>
+            <h2 className='font-medium overflow-hidden whitespace-nowrap overflow-ellipsis'>
+              {!bookDisplayData.title ? 'Title unknown' : bookDisplayData.title}
+            </h2>
+            <h3 className='text-white/50 text-sm'>
+              {!bookDisplayData.authors
+                ? 'Author(s) unknown'
+                : bookDisplayData.authors[0]}
+            </h3>
           </div>
         </Link>
       </div>
